@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-kopring-demo
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: kube-kopring-demo
+  template:
+    metadata:
+      labels:
+        app: kube-kopring-demo
+    spec:
+      containers:
+        - image: funin/kube-kopring-demo:latest
+          name: kube-kopring-demo
+          ports:
+            - containerPort: 8080
